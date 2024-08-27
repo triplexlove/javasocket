@@ -52,7 +52,7 @@ public class socketClient {//客户端
             Runtime runtime = Runtime.getRuntime();
             Process process = runtime.exec(cmd);
             // 使用BufferedReader读取命令的输出
-            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            BufferedReader reader =System.getProperty("os.name").toLowerCase().contains("win") ? new BufferedReader(new InputStreamReader(process.getInputStream(),"GBK")):new BufferedReader(new InputStreamReader(process.getInputStream()));
             String line;
             StringBuilder output = new StringBuilder();
             while ((line = reader.readLine()) != null) {
